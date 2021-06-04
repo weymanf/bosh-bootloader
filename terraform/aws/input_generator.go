@@ -63,7 +63,8 @@ func (i InputGenerator) Generate(state storage.State) (map[string]interface{}, e
 
 func (i InputGenerator) Credentials(state storage.State) map[string]string {
 	return map[string]string{
-		"access_key": state.AWS.AccessKeyID,
-		"secret_key": state.AWS.SecretAccessKey,
+		"access_key":        state.AWS.AccessKeyID,
+		"secret_key":        state.AWS.SecretAccessKey,
+		"aws_session_token": state.AWS.SessionToken,
 	}
 }

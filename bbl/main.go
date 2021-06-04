@@ -143,7 +143,7 @@ func main() {
 			networkDeletionValidator = awsClient
 			networkClient = awsClient
 
-			sessionToken := ""
+			sessionToken := appConfig.State.AWS.SessionToken
 			leftovers, err = awsleftovers.NewLeftovers(logger, appConfig.State.AWS.AccessKeyID, appConfig.State.AWS.SecretAccessKey, sessionToken, appConfig.State.AWS.Region)
 			if err != nil {
 				log.Fatalf("\n\n%s\n", err)

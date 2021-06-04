@@ -117,6 +117,7 @@ func (e Executor) PlanJumpbox(input DirInput, deploymentDir, iaas string) error 
 		boshArgs = append(boshArgs,
 			"-v", `access_key_id="${BBL_AWS_ACCESS_KEY_ID}"`,
 			"-v", `secret_access_key="${BBL_AWS_SECRET_ACCESS_KEY}"`,
+			"-v", `session_token="${BBL_AWS_SESSION_TOKEN}"`,
 		)
 	case "azure":
 		boshArgs = append(boshArgs,
@@ -234,6 +235,7 @@ func (e Executor) PlanDirector(input DirInput, deploymentDir, iaas string) error
 		boshArgs = append(boshArgs,
 			"-v", `access_key_id="${BBL_AWS_ACCESS_KEY_ID}"`,
 			"-v", `secret_access_key="${BBL_AWS_SECRET_ACCESS_KEY}"`,
+			"-v", `session_token="${BBL_AWS_SESSION_TOKEN}"`,
 		)
 	case "azure":
 		boshArgs = append(boshArgs,
@@ -312,6 +314,7 @@ func (e Executor) CreateEnv(input DirInput, state storage.State) (string, error)
 	case "aws":
 		os.Setenv("BBL_AWS_ACCESS_KEY_ID", state.AWS.AccessKeyID)
 		os.Setenv("BBL_AWS_SECRET_ACCESS_KEY", state.AWS.SecretAccessKey)
+		os.Setenv("BBL_AWS_SESSION_TOKEN", state.AWS.SessionToken)
 	case "azure":
 		os.Setenv("BBL_AZURE_CLIENT_ID", state.Azure.ClientID)
 		os.Setenv("BBL_AZURE_CLIENT_SECRET", state.Azure.ClientSecret)
@@ -365,6 +368,7 @@ func (e Executor) DeleteEnv(input DirInput, state storage.State) error {
 	case "aws":
 		os.Setenv("BBL_AWS_ACCESS_KEY_ID", state.AWS.AccessKeyID)
 		os.Setenv("BBL_AWS_SECRET_ACCESS_KEY", state.AWS.SecretAccessKey)
+		os.Setenv("BBL_AWS_SESSION_TOKEN", state.AWS.SessionToken)
 	case "azure":
 		os.Setenv("BBL_AZURE_CLIENT_ID", state.Azure.ClientID)
 		os.Setenv("BBL_AZURE_CLIENT_SECRET", state.Azure.ClientSecret)

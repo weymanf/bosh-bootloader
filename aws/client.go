@@ -44,7 +44,7 @@ type Client struct {
 
 func NewClient(creds storage.AWS, logger logger) Client {
 	config := &awslib.Config{
-		Credentials: credentials.NewStaticCredentials(creds.AccessKeyID, creds.SecretAccessKey, ""),
+		Credentials: credentials.NewStaticCredentials(creds.AccessKeyID, creds.SecretAccessKey, creds.SessionToken),
 		Region:      awslib.String(creds.Region),
 	}
 
